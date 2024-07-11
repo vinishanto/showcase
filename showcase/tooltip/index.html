@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      hr {
+        margin-bottom: 50px;
+      }
+      .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .tooltip {
+        position: relative;
+        display: inline-block;
+      }
+
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+      }
+
+      .tooltip.top .tooltiptext {
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 5px;
+      }
+
+      .tooltip.bottom .tooltiptext {
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 5px;
+      }
+
+      .tooltip.right .tooltiptext {
+        left: 100%;
+        margin-left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .tooltip.left .tooltiptext {
+        right: 100%;
+        margin-right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+      }
+
+
+      @media only screen and (min-width: 768px) {
+        .wrapper {
+            flex-direction: row;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Tooltip using CSS and HTML</h1>
+    <hr />
+
+    <div class="wrapper">
+      <div class="tooltip top">
+        Top Tooltip
+        <span class="tooltiptext">Tooltip text</span>
+      </div>
+
+      <div class="tooltip bottom">
+        Bottom Tooltip
+        <span class="tooltiptext">Tooltip text</span>
+      </div>
+
+      <div class="tooltip right">
+        right Tooltip
+        <span class="tooltiptext">Tooltip text </span>
+      </div>
+
+      <div class="tooltip left">
+        left Tooltip
+        <span class="tooltiptext">Tooltip text </span>
+      </div>
+    </div>
+  </body>
+</html>
