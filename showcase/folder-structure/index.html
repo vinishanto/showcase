@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        .wrapper{
+            padding:20px;
+        }
+        details {
+            padding: 3px 15px;
+        }
+        summary {
+            margin-left: -15px;
+        }
+        p {
+            padding: 0;
+            margin: 0;
+        }
+        /* details p {
+            padding-left: 0px;
+            margin-top: 5px;
+            margin-left: -5px;
+        } */
+    </style>
+  </head>
+  <body>
+    <h1>Folder Structure</h1>
+    <hr />
+
+    <div>
+      <!-- <ul>
+        <li>Folder A</li>
+        <ul>
+          <li>Folder A A</li>
+          <li>Folder A B</li>
+          <li>Folder A C</li>
+        </ul>
+        <li>Folder B</li>
+        <li>Folder C</li>
+      </ul> -->
+    </div>
+
+    <details id="wrapper" class="wrapper">
+        <summary>Root</summary>
+    </details>
+
+    <script>
+
+      let directory = [
+        {
+          type: "directory",
+          name: "Folder A",
+          items: [
+            {
+              type: "directory",
+              name: "Folder AA",
+              items: [{ type: "file", name: "file AA1" }],
+            },
+            {
+              type: "directory",
+              name: "Folder AB",
+              items: [{ type: "file", name: "fileAB1" }],
+            },
+
+            {
+              type: "directory",
+              name: "Folder AC",
+              items: [{ type: "file", name: "file AC1" }],
+            },
+          ],
+        },
+
+        {
+          type: "directory",
+          name: "Folder B",
+          items: [
+            {
+              type: "directory",
+              name: "Folder BA",
+              items: [{ type: "file", name: "file BA1" }],
+            },
+            {
+              type: "directory",
+              name: "Folder BB",
+              items: [{ type: "file", name: "file BB1" }],
+            },
+
+            {
+              type: "directory",
+              name: "Folder BC",
+              items: [{ type: "file", name: "file BC1" }],
+            },
+          ],
+        },
+        {
+          type: "file",
+          name: "file 1",
+        },
+      ];
+
+      const wrapper = document.getElementById("wrapper");
+      //   wrapper.innerHTML = "Hello";
+
+      function manipulateFolder(obj, element) {
+        switch (obj.type) {
+          case "directory": {
+            const dir = document.createElement("details"); 
+            const summary = document.createElement("summary");
+            summary.textContent = obj.name;
+            dir.appendChild(summary);
+            // const dirChild = document.createElement("div");
+            // dir.appendChild(dirChild);
+            element.appendChild(dir);
+            for (const f of obj.items) {
+              manipulateFolder(f, dir);
+            }
+            return;
+          }
+          case "file": {
+            const dir = document.createElement("p");
+            dir.textContent = obj.name;
+            element.appendChild(dir);
+            return;
+          }
+        }
+      }
+
+      for (const f of directory) {
+        manipulateFolder(f, wrapper);
+      }
+    </script>
+  </body>
+</html>
